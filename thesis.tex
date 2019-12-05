@@ -1,0 +1,155 @@
+\documentclass[letterpaper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Symbols and Formatting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsfonts, gensymb}
+
+\usepackage{lipsum}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Floats, Tables, and Figures
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{longtable, tabularx}
+\usepackage{float, placeins, caption, subcaption, wrapfig}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Table of Contents, Glossaries, Page Numbering, etc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{appendix, titletoc, url}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nonumberlist,nopostdot]{glossaries}
+\usepackage{glossary-mcols}
+\makeglossaries
+\newcommand{\newsymbentry}[3]{\newglossaryentry{#1}{name={\ensuremath{#2}}, description={#3}}}
+\newcommand{\listsymbolname}{List of Symbols}
+
+\def\frontmatter{%
+    \pagenumbering{roman}
+    \setcounter{page}{1}
+}%
+
+\def\mainmatter{%
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
+}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Symbols Go Here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Format is:
+% \newsymbentry{name}{symbol}{description}
+% name should be in plain English, can have spaces
+% symbol is the actual symbol DO NOT enclose in $$, that will be done automatically
+% description is the entry in the list of symbols
+
+% There is no reason to delete anything from this list. The assumption is that our symbols will be consistent throughout the course. So we can just keep adding to this list. If a symbol isn't used, it won't be printed in the list of symbols.
+
+\newsymbentry{pi}{\pi}{ratio of circumference of circle to its
+               diameter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title Setup
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{
+    Crop Circles Conceptual Design Review \\
+    \large AER E 461 Fall 2019 Section 1 Team 3
+        }
+\author{
+    Maxx Pankow 
+    \and Apoorva Kharche 
+    \and Ben Righter 
+    \and Christian Manahl 
+    \and Collin Monsees}
+\date{December 10, 2019}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Preamble End
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\frontmatter
+\maketitle
+\thispagestyle{empty}
+\clearpage % Use clear page when there's a logical difference in the page before and the page after, e.g. end of a section.
+
+\begin{abstract}
+Abstract goes here, do we want one?
+    
+\end{abstract}
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Table of Contents
+%%%%%%%%%%%%%%%%%%%
+\startcontents[sections]
+\printcontents[sections]{l}{1}{\setcounter{tocdepth}{2}}
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% List of Symbols, Tables, Figures
+%%%%%%%%%%%%%%%%%
+% Generated automatically from symbols list and used symbols
+
+\addcontentsline{toc}{section}{\listsymbolname}
+\printglossary[title=\listsymbolname]
+
+\clearpage
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+
+\clearpage
+\addcontentsline{toc}{section}{\listtablename}
+\listoftables
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Body
+%%%%%%%%%%%%%%%%%
+\mainmatter
+\section{Introduction}\label{sec:intro}
+When you use a symbol if you use the gls command, it forms a link and creates the entry in the List of Symbols, e.g. \gls{pi}
+\lipsum[1]
+\section{Market Research}\label{sec:research}
+\lipsum[2-3]
+\section{Initial Design}\label{sec:init}
+\lipsum[4-6]
+\section{Trade Studies}\label{sec:studies}
+\lipsum[7-12]
+\section{Conceptual Design}\label{sec:design}
+\lipsum[13-18]
+\section{Proposal for Future}\label{sec:proposal}
+\lipsum[19-20]
+\section{Conclusion}\label{sec:conc}
+\lipsum[21]
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appendices
+%%%%%%%%%%%%%%%%%
+\appendix
+\appendixpage
+\addcontentsline{toc}{section}{Appendices}
+\startcontents[sections]
+\printcontents[sections]{l}{1}{\setcounter{tocdepth}{2}}
+\clearpage
+
+\section{First Appendix}\label{app:first}
+\lipsum
+\clearpage
+
+\section{Second Appendix}\label{app:second}
+\lipsum
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

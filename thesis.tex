@@ -8,7 +8,13 @@
 \usepackage[T1]{fontenc}
 \usepackage{amsmath, amssymb, amsfonts, gensymb}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Draft Work and Testing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{lipsum}
+\usepackage[colorinlistoftodos]{todonotes}
+\setuptodonotes{inline}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Floats, Tables, and Figures
@@ -16,6 +22,13 @@
 
 \usepackage{longtable, tabularx}
 \usepackage{float, placeins, caption, subcaption, wrapfig}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TikZ and PGF
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,angles,quotes,positioning}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Table of Contents, Glossaries, Page Numbering, etc
@@ -79,7 +92,7 @@
 \clearpage % Use clear page when there's a logical difference in the page before and the page after, e.g. end of a section.
 
 \begin{abstract}
-Abstract goes here, do we want one?
+\todo{Abstract goes here, do we want one?}
     
 \end{abstract}
 \clearpage
@@ -97,17 +110,19 @@ Abstract goes here, do we want one?
 %%%%%%%%%%%%%%%%%
 % Generated automatically from symbols list and used symbols
 
+\phantomsection
 \addcontentsline{toc}{section}{\listsymbolname}
 \printglossary[title=\listsymbolname]
-
 \clearpage
+
+\phantomsection
 \addcontentsline{toc}{section}{\listfigurename}
 \listoffigures
-
 \clearpage
+
+\phantomsection
 \addcontentsline{toc}{section}{\listtablename}
 \listoftables
-
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -116,20 +131,161 @@ Abstract goes here, do we want one?
 %%%%%%%%%%%%%%%%%
 \mainmatter
 \section{Introduction}\label{sec:intro}
-When you use a symbol if you use the gls command, it forms a link and creates the entry in the List of Symbols, e.g. \gls{pi}
-\lipsum[1]
-\section{Market Research}\label{sec:research}
-\lipsum[2-3]
+
+
+\section{Requirements}\label{sec:req}
+
+
+\subsection{Problem Statement}\label{sec:req:ps}
+
+
+\subsection{Customer Requirements}\label{sec:req:cus}
+
+
+\subsection{Derived Requirements}\label{sec:req:der}
+
+
+\subsection{Scorecard}\label{sec:req:sc}
+
+
+\section{Market Research}\label{sec:research} % Collin
+In our team's market research, we examined two commercially available products that resembled our given design requirements. These were the eBee SQ and Sentera PHX. Both are small UAVs designed specifically for agriculture surveying, and aspects of each helped shape our derived requirements. 
+
+\subsection{Market Examples}
+\subsubsection{eBee SQ} 
+The eBee SQ, from senseFly, is a small, fixed-wing drone. It has a 43-inch wingspan and 2.4-lb weight fully loaded with its camera and battery. Despite its small size, it boasts a maximum flight time of 55 minutes and maximum range of 25 miles. The UAV also has a max cruise speed of 30 m/s, or 68 mph. The range and
+cruise speed allow the drone to cover about 500 acres in a single flight when flying at 400 feet
+above ground. Other notable characteristics are that the eBee SQ is hand launched and uses a
+pusher propeller. 
+The payload is the Parrot Sequoia+ Camera, which is the same one given for our design. This drone also claims wind resistance up to 28-mph winds, which closely matches our objectives of handling sustained winds 25 mph and gusts up to 30 mph.
+Lastly, this agriculture surveyor includes an automatic, field-based flight planning and control
+software that is compatible with existing Farm Management Information Systems. This software, along with the drone, comes with a hefty price though. The eBee SQ package starts at \$ 25,000. An example of the flight planning tool is shown below. 
+\begin{figure}
+    \centering
+    \missingfigure{flight planner}
+    \caption{eBee SQ's Flight Planning Software}
+    \label{fig:ebee_flightplanner}
+\end{figure}
+
+\subsection{Design Examples}
+
+
 \section{Initial Design}\label{sec:init}
-\lipsum[4-6]
+At the beginning of our design process, our initial design was modeled with a few questions in mind; how the craft would be launched, how it would land, and what kind of internal structure would be needed to support the aerodynamic forces during those times. With the intention of making as many iterations as possible, Collin and Ben both made separate designs incorporating different design aspects, each with advantages over the other.   
+
+\subsection{Concept 1}\label{sec:init:1}
+Ben's design featured a high mounted horizontal stabilizer and a high mounted pusher propeller. Both design choices would help the aircraft survive a belly landing, and the high mounted tail section would help offset the moment produced by the high mounted motor.
+
+\subsection{Concept 2}\label{sec:init:2}
+Collins design featured a standard empennage configuration and a nose-mounted propeller. This configuration would make for a much simpler design, as the thrust from the motor and the control form the tail would be in-line with the center of mass. 
+
+\subsection{Design Selection}\label{sec:init:sel}
+After group discussion of the pros and cons of each of the designs, we decided to move forward with the high mounted tail and propeller, to ensure a simpler and safer landing while still being able to hand launch the aircraft. 
+
+\subsubsection{Challenges}
+
 \section{Trade Studies}\label{sec:studies}
-\lipsum[7-12]
+
+\subsection{Wing}\label{sec:studies:wing}
+
+\subsubsection{Airfoil}\label{sec:studies:wing:foil} % Christian
+
+For the application at hand and the associated required altitudes and airspeeds three airfoils were initially considered: The NACA 4412, The Clark-Y, and the CH-10. They can bee seen in Figure \ref{fig:foils} These three airfoils were considered for their performance at low to medium Reynolds numbers. The Clark-Y airfoil was also considered due to its flat bottom surface, which would ease construction. 
+%Design X: we'll have a numbering system put in the right design there. I'll recognize it on sight
+
+Following group deliberation we decided to focus only on the NACA 4412 and the Clark-Y. Design X was put into StarCCM with all other things remaining equal but the airfoil type. We knew that the benefits of choosing the CH10 over the NACA 4412 would be the improved lift, bu we found that the NACA 4412 provided the necessary lift with less camber and drag.
+
+\todo{Maybe rewrite so the reasoning makes more sense if it is vague as is.}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[c]{.45\linewidth}
+        \missingfigure{NACA 4412}
+        \caption{NACA 4412}
+    \end{subfigure}
+    \begin{subfigure}[c]{.45\linewidth}
+        \missingfigure{CH-10}
+        \caption{CH-10}
+    \end{subfigure}
+    \begin{subfigure}[c]{.45\linewidth}
+        \missingfigure{Clark-Y}
+        \caption{Clark-Y}
+    \end{subfigure}
+    \caption{Airfoils Considered}
+    \label{fig:foils}
+\end{figure}
+
+\subsubsection{Planform}\label{sec:studies:wing:form} % Apoorva
+
+
+
+\subsection{Fuselage}\label{sec:studies:fuse}
+\todo{Perhaps remove names? Team worked on two designs, etc? Rename designs and use those instead of ``Collin's Design'' and ``Ben's Design''}
+For 2 weeks, Collin and Ben worked on separate designs, making changes and improvements based on feedback and ideas from each other and the rest of the group. Then, after each of them had completed their ‘final’ design, each design was given the same airfoil at the same wingspan and chord length, and entered into the simulation. Based on the results from that simulation, the team decided to move on using Collins design. From this point on, both Ben and Collin would work together on making improvements to the teams’ design. 
+    
+In the early stages of the joint design, the team faced a number of technical challenges that were overlooked in previous iterations. The first of these challenges was the initial chord length of only 5 inches. After further inspection, the team decided that the lift provided by the small chord length required the craft to fly at an uncomfortably high speed to avoid stalling. This resulted in a high landing speed, which put the craft at risk of being damaged on touchdown. Additionally, the small chord would be difficult to manufacture and would cause the wing to be easily destroyed upon landing. One challenge that was known in the early design stages, but underestimated, was the moments caused by the high mounted motor. In order to counteract this force, the wing was mounted at a slight angle, and the horizontal stabilizer was changed from having flaps to a stabilator, which provides more pitch authority for the pilot. Once the internals of the craft began to be modeled and put into the fuselage, it was quickly realized that the fuselage would have to be extended in order to fit all the necessary components. As a result of the fuselage extending and the internals being placed in with their proper masses, the Cg location changed drastically from the initial estimates. As a result, the dimensions of the empennage and the tail boom were changed drastically. 
+
+
+\subsubsection{Aerodynamics}  % Christian
+
+
+\subsubsection{Structure} % Apoorva
+
+\subsection{Propulsion}\label{sec:studies:prop} % Apoorva
+
+\subsubsection{Endurance}\label{sec:studies:prop:end} % Apoorva
+
+\subsubsection{Propeller}\label{sec:studies:prop:prop} % Apoorva
+
+\subsubsection{Motor}\label{sec:studies:prop:motor} % Apoorva
+
+\subsection{Scorecard}
+
+To aid iteration an design changes, a score card was created as a quick reference tool. By being able to look at a single score for each design, successive iterations can be easily graded. However, as a single number could never completely describe the benefits and shortfalls of a design, many decisions were made extraneously from the score card. 
+
+Sixteen categories were considered for scoring, and each was given a weighting of between one and ten. Each category was also given an associated threshold, beyond which designs were unsatisfactory and would receive a score of zero. These thresholds came directly from customer requirements in most cases. 
+
 \section{Conceptual Design}\label{sec:design}
-\lipsum[13-18]
+
+\subsection{Structure}
+\subsubsection{Components}
+\subsubsection{Payload}
+
+\subsection{Performance}
+\subsubsection{Propulsion and Endurance} % Apoorva
+
+\subsubsection{Aerodynamics}
+The final model was analyzed at a range of angles of attack in StarCCM - yielding lift, drag, and moment curves for the aircraft. StarCCM physics values used were an altitude of 3000 feet and an airspeed of 40 miles per hour.
+
+\subsubsection{Stability}
+Particular pitch moment difficulties are introduced by the high-mounted motor. This was modeled as a momentum disk in StarCCM and allowed determination of how the neutral point would move on the craft with the engine on or off. Early aircraft iterations had very large horizontal tails, effectively moving the neutral point fairly far back. The finished craft has a center of gravity 1.25 feet behind the nose, and a neutral point (?), as demonstrated in Figure \ref{fig:neutralpoint}
+
+\begin{figure}
+    \centering
+    % If you don't have the picture yet, use \missingfigure so that the thing still compiles for everyone else
+    \missingfigure{Neutral Point figure}
+    \caption{Conceptual Design Neutral Point and Center of Gravity}
+    \label{fig:neutralpoint}
+\end{figure}
+
 \section{Proposal for Future}\label{sec:proposal}
-\lipsum[19-20]
+
+\subsection{Schedule and Milestones}
+
+\begin{figure}
+    \centering
+    \input{schedule.tikz}
+    \caption{Proposed Schedule}
+    \label{fig:sched}
+\end{figure}
+
+\subsection{Manufacturing and Processes}
+
+\subsection{Costs and Bill of Materials}
+
 \section{Conclusion}\label{sec:conc}
-\lipsum[21]
+
+
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

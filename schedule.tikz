@@ -1,0 +1,17 @@
+\begin{tikzpicture}[
+    auto, x={\linewidth /150}, y=1cm, >=latex'
+    ]
+        \node [coordinate] (s) at (-5,0) {};
+        \node [coordinate] (e) at (130,0) {};
+        \draw [<->] (s) -- (e);
+        
+        \foreach \x in {0,7,...,126}
+        \draw (\x ,3pt) -- (\x ,-3pt);
+        
+        \node [coordinate] (o) at (0,0) {};
+        \draw (o) node[below]{13-Jan};
+        
+        \draw [-] (14, 0) -- (14, 1) node[above]{27-Jan} 
+        \draw (14,1.5) node[above]{Start Building};
+        
+\end{tikzpicture}
